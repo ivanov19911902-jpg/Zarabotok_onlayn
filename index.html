@@ -1,0 +1,893 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>9 проверенных способов заработка в интернете от практика</title>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #0EA5E9;
+            --primary-dark: #0369A1;
+            --accent: #00FF88;
+            --dark: #0F172A;
+            --light: #F8FAFC;
+            --gray: #64748B;
+            --card-bg: rgba(255, 255, 255, 0.05);
+            --card-border: rgba(255, 255, 255, 0.1);
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--dark);
+            color: var(--light);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        .animated-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(14, 165, 233, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(0, 255, 136, 0.05) 0%, transparent 50%);
+            z-index: -2;
+        }
+
+        .progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            transform-origin: left;
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+            z-index: 1000;
+        }
+
+        .floating-nav {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 999;
+            display: flex;
+            gap: 10px;
+        }
+
+        .nav-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--gray);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            opacity: 0.6;
+        }
+
+        .nav-dot.active {
+            background: var(--primary);
+            transform: scale(1.3);
+            opacity: 1;
+        }
+
+        section {
+            min-height: 100vh;
+            padding: 80px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .hero {
+            text-align: center;
+            position: relative;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .badge {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            color: var(--dark);
+            padding: 8px 20px;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 2rem;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        .hero-subtitle {
+            font-size: 1.3rem;
+            color: #94A3B8;
+            margin-bottom: 3rem;
+            font-weight: 400;
+        }
+
+        .author-card {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+            background: var(--card-bg);
+            padding: 40px;
+            border-radius: 20px;
+            margin-top: 3rem;
+            border: 1px solid var(--card-border);
+            backdrop-filter: blur(10px);
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .author-avatar {
+            width: 200px;
+            height: 200px;
+            border-radius: 15px;
+            background-image: url('images/photo.jpg');
+            background-size: cover;
+            background-position: center;
+            border: 3px solid var(--primary);
+            flex-shrink: 0;
+        }
+
+        .author-info {
+            flex: 1;
+            text-align: left;
+        }
+
+        .author-info h3 {
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+            color: var(--light);
+        }
+
+        .author-info .title {
+            color: var(--primary);
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
+
+        .author-info .bio {
+            color: #94A3B8;
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+
+        .bio-highlight {
+            color: var(--accent);
+            font-weight: 600;
+        }
+
+        .cta-section {
+            background: rgba(14, 165, 233, 0.1);
+            padding: 30px;
+            border-radius: 15px;
+            margin-top: 2rem;
+            border-left: 4px solid var(--primary);
+        }
+
+        .cta-section h4 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .intro-section {
+            background: var(--card-bg);
+            border-radius: 20px;
+            padding: 60px;
+            margin-bottom: 50px;
+            border: 1px solid var(--card-border);
+            backdrop-filter: blur(10px);
+        }
+
+        .intro-section h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .strategy-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 2rem 0;
+        }
+
+        .strategy-item {
+            text-align: center;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 15px;
+            border: 1px solid var(--card-border);
+        }
+
+        .strategy-number {
+            background: var(--primary);
+            color: var(--dark);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 15px;
+            font-weight: bold;
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .method-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .method-card {
+            background: var(--card-bg);
+            border-radius: 20px;
+            padding: 40px 30px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid var(--card-border);
+            backdrop-filter: blur(10px);
+        }
+
+        .method-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+        }
+
+        .method-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--primary);
+            box-shadow: 0 20px 40px rgba(14, 165, 233, 0.2);
+        }
+
+        .method-icon {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .method-card h3 {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--light);
+        }
+
+        .method-subtitle {
+            color: #94A3B8;
+            font-style: italic;
+            margin-bottom: 1.5rem;
+            font-size: 0.95rem;
+        }
+
+        .step-list {
+            list-style: none;
+            margin: 1.5rem 0;
+        }
+
+        .step-list li {
+            padding: 10px 0;
+            position: relative;
+            padding-left: 30px;
+            margin-bottom: 0.5rem;
+            color: #94A3B8;
+        }
+
+        .step-list li::before {
+            content: '⟩';
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+            font-weight: bold;
+            font-size: 1.1rem;
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .result-box {
+            background: rgba(0, 255, 136, 0.1);
+            padding: 15px;
+            border-radius: 10px;
+            border-left: 4px solid var(--accent);
+            margin: 1.5rem 0;
+        }
+
+        .course-recommendation {
+            background: rgba(14, 165, 233, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 4px solid var(--primary);
+            margin-top: 1.5rem;
+        }
+
+        .course-recommendation strong {
+            color: var(--primary);
+        }
+
+        .contacts {
+            text-align: center;
+            margin-top: 3rem;
+            padding: 30px;
+            background: var(--card-bg);
+            border-radius: 20px;
+            border: 1px solid var(--card-border);
+            backdrop-filter: blur(10px);
+        }
+
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .contact-link {
+            padding: 12px 24px;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            color: var(--dark);
+            text-decoration: none;
+            border-radius: 10px;
+            transition: transform 0.3s ease;
+            font-weight: 600;
+        }
+
+        .contact-link:hover {
+            transform: translateY(-2px);
+        }
+
+        .conclusion-section {
+            text-align: center;
+            background: linear-gradient(135deg, #1E293B, #334155);
+            color: white;
+            border-radius: 30px;
+            margin: 50px auto;
+            padding: 80px 40px;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid var(--card-border);
+        }
+
+        .conclusion-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 100%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(14, 165, 233, 0.1) 1px, transparent 1px);
+            background-size: 20px 20px;
+            animation: float 20s linear infinite;
+        }
+
+        @keyframes float {
+            0% { transform: translate(0, 0) rotate(0deg); }
+            100% { transform: translate(-20px, -20px) rotate(360deg); }
+        }
+
+        .conclusion-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .final-cta {
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            color: var(--dark);
+            padding: 25px;
+            border-radius: 15px;
+            margin-top: 2rem;
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .method-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .floating-nav {
+                display: none;
+            }
+            
+            section {
+                padding: 60px 15px;
+            }
+            
+            .conclusion-section {
+                padding: 60px 20px;
+                margin: 30px 15px;
+            }
+            
+            .author-card {
+                flex-direction: column;
+                text-align: center;
+                padding: 20px;
+            }
+            
+            .author-avatar {
+                width: 150px;
+                height: 150px;
+                margin-right: 0;
+                margin-bottom: 20px;
+            }
+            
+            .intro-section {
+                padding: 30px 20px;
+            }
+            
+            .contact-links {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .author-info {
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="animated-bg"></div>
+    <div class="progress-bar" id="progressBar"></div>
+
+    <nav class="floating-nav" id="floatingNav">
+        <div class="nav-dot" data-target="hero"></div>
+        <div class="nav-dot" data-target="intro"></div>
+        <div class="nav-dot" data-target="methods"></div>
+        <div class="nav-dot" data-target="conclusion"></div>
+    </nav>
+
+    <section class="hero" id="hero">
+        <div class="container">
+            <div class="hero-content fade-in">
+                <div class="badge">🚀 Для новичков в интернет-заработке</div>
+                <h1>9 проверенных способов заработка в интернете от практика</h1>
+                <p class="hero-subtitle">Личный опыт + пошаговые инструкции = ваш первый доход</p>
+                
+                <div class="author-card">
+                    <div class="author-avatar"></div>
+                    <div class="author-info">
+                        <h3>Вадим Иванов</h3>
+                        <div class="title">Практик интернет-заработка с 5-летним опытом</div>
+                        <div class="bio">
+                            С 2019 года тестирую и создаю рабочие системы онлайн-дохода. Прошел путь от простых заказов на биржах фриланса до стабильных заработков из любой точки мира.<br><br>
+                            
+                            <span class="bio-highlight">Моя история:</span> Перебрался в маленький курортный городок Балтийск на берегу моря, где удаленно зарабатываю и имею полную свободу выбора и качества жизни.<br><br>
+                            
+                            <strong>Хочу показать вам редкие способы, которыми зарабатываю сам.</strong> Каждый способ стоит внимания — идем от простого к сложному. Это не волшебная кнопка «разбогатей», а рабочие инструменты, где у вас есть выбор:<br><br>
+                            
+                            • Изучать самому (займет чуть больше времени)<br>
+                            • Обучиться у практиков (многие делятся знаниями бесплатно)<br><br>
+                            
+                            К каждому способу я прикрепляю свои проверенные рекомендации — курсы, материалы и экспертов, в которых уверен. Не теоретики, а люди, дающие реальные инструменты.
+                        </div>
+                        
+                        <div class="cta-section">
+                            <h4>🎯 Изучай → Выбирай → Внедряй</h4>
+                            <p>После изучения гайда просто выбери понравившийся способ и напиши мне его цифру. Проведу тебя за ручку до первых денег в этом направлении.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="intro">
+        <div class="container">
+            <div class="intro-section fade-in">
+                <h2>Интернет — это ваша новая возможность</h2>
+                <p style="font-size: 1.1rem; margin-bottom: 1.5rem; color: #94A3B8;">Заработок в сети перестал быть уделом избранных. Сегодня это — реальный инструмент для каждого, у кого есть желание и доступ в интернет.</p>
+                
+                <p style="font-size: 1.1rem; margin-bottom: 2rem; color: #94A3B8;">Но с чего начать, если нет опыта? Главный враг новичка — не отсутствие таланта, а <strong style="color: var(--accent);">нехватка времени и понятного руководства к действию</strong>.</p>
+                
+                <h3 style="color: var(--primary); margin-bottom: 1.5rem; text-align: center;">Ваша стратегия:</h3>
+                
+                <div class="strategy-grid">
+                    <div class="strategy-item">
+                        <div class="strategy-number">1</div>
+                        <strong>Выберите направление, которое вас вдохновляет</strong>
+                    </div>
+                    <div class="strategy-item">
+                        <div class="strategy-number">2</div>
+                        <strong>Начните с малого, но начните</strong>
+                    </div>
+                    <div class="strategy-item">
+                        <div class="strategy-number">3</div>
+                        <strong>Учитесь постоянно</strong>
+                    </div>
+                </div>
+                
+                <p style="text-align: center; font-size: 1.1rem; margin-top: 2rem; color: #94A3B8;">
+                    Обучайтесь по бесплатным видеороликам на YouTube и других образовательных платформах. Начинающие специалисты часто делятся ценным опытом, который поможет сделать первые шаги.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section id="methods">
+        <div class="container">
+            <h2 style="text-align: center; font-size: 2.5rem; margin-bottom: 1rem; background: linear-gradient(135deg, var(--primary), var(--accent)); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">9 рабочих способов</h2>
+            <p style="text-align: center; color: #94A3B8; margin-bottom: 3rem; font-size: 1.1rem;">Выберите тот, что откликается именно вам</p>
+            
+            <div class="method-grid">
+                <!-- Способ 1 -->
+                <div class="method-card fade-in">
+                    <div class="method-icon">💰</div>
+                    <h3>Платные опросы</h3>
+                    <p class="method-subtitle">Самый простой старт без специальных знаний</p>
+                    
+                    <p style="color: #94A3B8;">Компании платят деньги за ваше мнение об их продуктах. Вы заполняете анкеты онлайн, а деньги приходят на электронный кошелек.</p>
+                    
+                    <h4 style="margin: 1.5rem 0 1rem 0; color: var(--primary);">Пошаговый план на первую неделю:</h4>
+                    <ul class="step-list">
+                        <li><strong>День 1-2:</strong> Регистрация на 3 основных платформах (Анкетка.ру, Яндекс.Толока, Опросники.ру)</li>
+                        <li><strong>День 3-7:</strong> Ежедневная работа по 1-2 часа, начинайте с коротких анкет</li>
+                        <li><strong>Регулярно:</strong> Отслеживайте выплаты в личных кабинетах</li>
+                    </ul>
+                    
+                    <div class="result-box">
+                        <strong>Первый результат:</strong> 500-1000 рублей через 3-4 дня
+                    </div>
+                    
+                    <div class="course-recommendation">
+                        <strong>Для углубленного изучения:</strong> список проверенных платформ с высокими выплатами - получите доступ к 10+ надежным сайтам с ежедневными выплатами
+                    </div>
+                </div>
+
+                <!-- Способ 2 -->
+                <div class="method-card fade-in">
+                    <div class="method-icon">💼</div>
+                    <h3>Фриланс</h3>
+                    <p class="method-subtitle">Продажа ваших навыков онлайн</p>
+                    
+                    <p style="color: #94A3B8;">Вы предлагаете услуги на специальных биржах. Не нужно быть экспертом — начинайте с простых заданий.</p>
+                    
+                    <h4 style="margin: 1.5rem 0 1rem 0; color: var(--primary);">Пошаговый план на 2 недели:</h4>
+                    <ul class="step-list">
+                        <li><strong>Неделя 1:</strong> Создание профиля и первых услуг на Kwork, FL.ru</li>
+                        <li><strong>Неделя 2:</strong> Активные отклики на заказы, получение первых отзывов</li>
+                        <li><strong>Далее:</strong> Постепенное повышение цен и расширение услуг</li>
+                    </ul>
+                    
+                    <div class="result-box">
+                        <strong>Первый результат:</strong> 2-3 заказа на 2000-5000 рублей за 2 недели
+                    </div>
+                    
+                    <div class="course-recommendation">
+                        <strong>Для быстрого старта:</strong> курс "Богатый помогатор" от Ольги Арининой - готовая система для заработка от 1500 рублей в день на подборе персонала
+                    </div>
+                </div>
+
+                <!-- Способ 3 -->
+                <div class="method-card fade-in">
+                    <div class="method-icon">🤖</div>
+                    <h3>Нейросети</h3>
+                    <p class="method-subtitle">Искусственный интеллект ваш помощник</p>
+                    
+                    <p style="color: #94A3B8;">Использование AI для создания контента — текстов, изображений, видео на заказ для клиентов.</p>
+                    
+                    <h4 style="margin: 1.5rem 0 1rem 0; color: var(--primary);">Пошаговый план на первый месяц:</h4>
+                    <ul class="step-list">
+                        <li><strong>Неделя 1:</strong> Освоение ChatGPT, Midjourney, DALL-E</li>
+                        <li><strong>Неделя 2-3:</strong> Создание портфолио из 20-30 работ</li>
+                        <li><strong>Неделя 4:</strong> Поиск заказчиков через биржи и соцсети</li>
+                    </ul>
+                    
+                    <div class="result-box">
+                        <strong>Первый результат:</strong> 2-3 заказа на 3000-7000 рублей за месяц
+                    </div>
+                    
+                    <div class="course-recommendation">
+                        <strong>Для профессионального роста:</strong> бесплатный интенсив от Евгения Андрианова - за 3 дня научитесь зарабатывать на нейросетях с нуля
+                    </div>
+                </div>
+
+                <!-- Способ 4 -->
+                <div class="method-card fade-in">
+                    <div class="method-icon">🤖</div>
+                    <h3>Чат-боты</h3>
+                    <p class="method-subtitle">Автоматизируйте бизнес</p>
+                    
+                    <p style="color: #94A3B8;">Создание автоматических помощников для бизнеса в мессенджерах, которые общаются с клиентами 24/7.</p>
+                    
+                    <h4 style="margin: 1.5rem 0 1rem 0; color: var(--primary);">Пошаговый план на первый месяц:</h4>
+                    <ul class="step-list">
+                        <li><strong>Неделя 1:</strong> Освоение конструкторов ManyChat, SendPulse</li>
+                        <li><strong>Неделя 2:</strong> Создание первого бота для простой задачи</li>
+                        <li><strong>Неделя 3-4:</strong> Поиск заказчиков среди малого бизнеса</li>
+                    </ul>
+                    
+                    <div class="result-box">
+                        <strong>Первый результат:</strong> 1-2 платных заказа на 5000-15000 рублей через 3 недели
+                    </div>
+                    
+                    <div class="course-recommendation">
+                        <strong>Для старта:</strong> бесплатный мини-курс от GetHelpers - 4 урока по созданию чат-ботов без программирования + готовые шаблоны
+                    </div>
+                </div>
+
+                <!-- Способ 5 -->
+                <div class="method-card fade-in">
+                    <div class="method-icon">📈</div>
+                    <h3>Партнерский маркетинг</h3>
+                    <p class="method-subtitle">Рекомендуйте и зарабатывайте</p>
+                    
+                    <p style="color: #94A3B8;">Вы рекламируете товары компаний и получаете процент с каждой продажи по вашей ссылке.</p>
+                    
+                    <h4 style="margin: 1.5rem 0 1rem 0; color: var(--primary);">Пошаговый план на первые 30 дней:</h4>
+                    <ul class="step-list">
+                        <li><strong>День 1-7:</strong> Выбор ниши, регистрация в Admitad, GLS</li>
+                        <li><strong>День 8-21:</strong> Создание Telegram-канала, написание постов</li>
+                        <li><strong>День 22-30:</strong> Привлечение аудитории, запуск рекламы</li>
+                    </ul>
+                    
+                    <div class="result-box">
+                        <strong>Первый результат:</strong> Первые продажи и 1000-3000 рублей дохода через 3-4 недели
+                    </div>
+                    
+                    <div class="course-recommendation">
+                        <strong>Для системного заработка:</strong> бесплатный тренинг от Владислава Челпаченко - стратегия заработка от 35,000 рублей в месяц на партнерках
+                    </div>
+                </div>
+
+                <!-- Способ 6 -->
+                <div class="method-card fade-in">
+                    <div class="method-icon">🎯</div>
+                    <h3>Спортивные вилки</h3>
+                    <p class="method-subtitle">Гарантированная прибыль</p>
+                    
+                    <p style="color: #94A3B8;">Математическая стратегия ставок на спорт с гарантированной прибылью при любом исходе события.</p>
+                    
+                    <h4 style="margin: 1.5rem 0 1rem 0; color: var(--primary);">Пошаговый план на первый месяц:</h4>
+                    <ul class="step-list">
+                        <li><strong>Неделя 1:</strong> Изучение механики вилок, регистрация в БК</li>
+                        <li><strong>Неделя 2:</strong> Освоение сканеров RebelBetting, BetBurger</li>
+                        <li><strong>Неделя 3-4:</strong> Первые ставки с минимальными суммами</li>
+                    </ul>
+                    
+                    <div class="result-box">
+                        <strong>Первый результат:</strong> Стабильные 200-500 рублей прибыли daily через 2 недели
+                    </div>
+                    
+                    <div class="course-recommendation">
+                        <strong>Для профессионального подхода:</strong> бесплатный гайд от ИП Субботенко В.А. - чек-лист + видеоинструкция по заработку на букмекерских вилках
+                    </div>
+                </div>
+
+                <!-- Способ 7 -->
+                <div class="method-card fade-in">
+                    <div class="method-icon">✍️</div>
+                    <h3>Копирайтинг</h3>
+                    <p class="method-subtitle">Заработок на текстах</p>
+                    
+                    <p style="color: #94A3B8;">Написание текстов для бизнеса: посты в соцсетях, статьи для блогов, описания товаров.</p>
+                    
+                    <h4 style="margin: 1.5rem 0 1rem 0; color: var(--primary);">Пошаговый план на первые 4 недели:</h4>
+                    <ul class="step-list">
+                        <li><strong>Неделя 1:</strong> Освоение форматов текстов, написание пробных работ</li>
+                        <li><strong>Неделя 2:</strong> Создание портфолио из 10-15 работ</li>
+                        <li><strong>Неделя 3-4:</strong> Поиск заказчиков на биржах Text.ru, Advego</li>
+                    </ul>
+                    
+                    <div class="result-box">
+                        <strong>Первый результат:</strong> 3-5 заказов на 5000-10000 рублей за месяц
+                    </div>
+                    
+                    <div class="course-recommendation">
+                        <strong>Для роста доходов:</strong> видео-курс "Быстрые деньги на текстах" от Анны Челпаченко - обучение копирайтингу с доходом от 45,000 руб/мес
+                    </div>
+                </div>
+
+                <!-- Способ 8 -->
+                <div class="method-card fade-in">
+                    <div class="method-icon">🎥</div>
+                    <h3>YouTube</h3>
+                    <p class="method-subtitle">Создание канала без съемок</p>
+                    
+                    <p style="color: #94A3B8;">Создание видео-контента для зарубежной аудитории с использованием готовых материалов.</p>
+                    
+                    <h4 style="margin: 1.5rem 0 1rem 0; color: var(--primary);">Пошаговый план на первые 6 недель:</h4>
+                    <ul class="step-list">
+                        <li><strong>Неделя 1-2:</strong> Выбор ниши, создание и оформление канала</li>
+                        <li><strong>Неделя 3-4:</strong> Создание 5-7 роликов из готовых видео</li>
+                        <li><strong>Неделя 5-6:</strong> Продвижение, подача на монетизацию</li>
+                    </ul>
+                    
+                    <div class="result-box">
+                        <strong>Первый результат:</strong> 1000 подписчиков и 4000 часов просмотра за 2 месяца
+                    </div>
+                    
+                    <div class="course-recommendation">
+                        <strong>Для ускорения роста:</strong> бесплатный интенсив от Евгении Свиридовой - практический курс по запуску YouTube-канала с доходом 1000$+/месяц
+                    </div>
+                </div>
+
+                <!-- Способ 9 -->
+                <div class="method-card fade-in">
+                    <div class="method-icon">📱</div>
+                    <h3>Telegram</h3>
+                    <p class="method-subtitle">Создание сообществ и их монетизация</p>
+                    
+                    <p style="color: #94A3B8;">Создание тематического канала, сбор аудитории и заработок на рекламе, партнерках, платных подписках.</p>
+                    
+                    <h4 style="margin: 1.5rem 0 1rem 0; color: var(--primary);">Пошаговый план на первые 30 дней:</h4>
+                    <ul class="step-list">
+                        <li><strong>День 1-7:</strong> Создание канала, написание 15-20 постов</li>
+                        <li><strong>День 8-21:</strong> Привлечение подписчиков через пиары</li>
+                        <li><strong>День 22-30:</strong> Монетизация через рекламу и партнерки</li>
+                    </ul>
+                    
+                    <div class="result-box">
+                        <strong>Первый результат:</strong> 500-1000 подписчиков и 2000-5000 рублей дохода за месяц
+                    </div>
+                    
+                    <div class="course-recommendation">
+                        <strong>Для профессионального роста:</strong> бесплатный онлайн-курс от Артема Мазура - 3-дневный интенсив по заработку в Telegram от 80,000 руб/месяц
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="conclusion">
+        <div class="container">
+            <div class="conclusion-section fade-in">
+                <h2>Ваш путь к финансовой свободе начинается сегодня!</h2>
+                <p style="font-size: 1.2rem; margin-bottom: 2rem; opacity: 0.9;">Выберите один способ и посвятите ему 21 день непрерывной работы</p>
+                
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin: 3rem 0;">
+                    <div style="text-align: center; padding: 20px;">
+                        <div style="font-size: 2rem; margin-bottom: 10px;">🚀</div>
+                        <div style="font-weight: 600;">Старт за 1-3 дня</div>
+                    </div>
+                    <div style="text-align: center; padding: 20px;">
+                        <div style="font-size: 2rem; margin-bottom: 10px;">💸</div>
+                        <div style="font-weight: 600;">Первые деньги через неделю</div>
+                    </div>
+                    <div style="text-align: center; padding: 20px;">
+                        <div style="font-size: 2rem; margin-bottom: 10px;">📈</div>
+                        <div style="font-weight: 600;">Стабильный доход через месяц</div>
+                    </div>
+                </div>
+
+                <div class="final-cta">
+                    🎯 Выбери понравившийся способ и напиши мне его цифру!<br>
+                    Проведу тебя за ручку до первых денег
+                </div>
+
+                <div class="contacts">
+                    <h3 style="color: var(--primary); margin-bottom: 1rem;">Есть вопросы? Пишите!</h3>
+                    <div class="contact-links">
+                        <a href="https://vk.com/your_profile" class="contact-link">ВКонтакте</a>
+                        <a href="https://t.me/your_username" class="contact-link">Telegram</a>
+                        <a href="mailto:your.email@mail.ru" class="contact-link">Email</a>
+                    </div>
+                    <p style="margin-top: 1rem; color: #94A3B8; font-size: 0.9rem;">
+                        Всегда рад помочь и ответить на ваши вопросы!
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        window.addEventListener('scroll', () => {
+            const winHeight = window.innerHeight;
+            const docHeight = document.documentElement.scrollHeight;
+            const scrollTop = window.pageYOffset;
+            const scrollPercent = scrollTop / (docHeight - winHeight);
+            document.getElementById('progressBar').style.transform = `scaleX(${scrollPercent})`;
+        });
+
+        document.querySelectorAll('.nav-dot').forEach(dot => {
+            dot.addEventListener('click', () => {
+                const target = document.getElementById(dot.dataset.target);
+                target.scrollIntoView({ behavior: 'smooth' });
+            });
+        });
+
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('section');
+            const navDots = document.querySelectorAll('.nav-dot');
+            
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (pageYOffset >= sectionTop - 200) {
+                    current = section.getAttribute('id');
+                }
+            });
+            
+            navDots.forEach(dot => {
+                dot.classList.remove('active');
+                if (dot.dataset.target === current) {
+                    dot.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
